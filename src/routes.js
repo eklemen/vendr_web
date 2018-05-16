@@ -11,8 +11,8 @@ import Dashboard from './Dashboard/Dashboard';
 const Routes = () => (
   <Router>
     <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/login" component={Login}/>
+      <Route path="/dashboard" component={Dashboard}/>
     </Switch>
   </Router>
 );

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Icon, Grid, Header } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import {Button, Icon, Grid, Header} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 // import { igLogin } from '../services/LoginService';
 // import api from "../services/apiEndpoints";
 
@@ -22,16 +22,17 @@ const Login = () => {
         textAlign='center'
         verticalAlign='middle'
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{maxWidth: 450}}>
           <Header as='h2' textAlign='center'>
             Log-in to your account
           </Header>
-          <Button onClick={() => {}}>
+          <Button onClick={() => {
+          }}>
             <Link to="/dashboard">
               <Icon
                 name='instagram'
                 color='orange'
-                size='huge' />
+                size='huge'/>
               <span>Login with Instagram</span>
             </Link>
           </Button>
