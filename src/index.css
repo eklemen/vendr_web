@@ -1,8 +1,31 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: sans-serif;
 }
+
+#root {
+  height: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.ui.grid {
+  /*margin-top: 4rem;*/
+}
+
+.drop-shadow {
+  box-shadow: rgb(204, 204, 204) 0 0 30px;
+  height: 100%;
+}
+
 .login-form .ui.grid {
   height: 100%;
+}
+
+.selectable tr:hover {
+  cursor: pointer;
 }
