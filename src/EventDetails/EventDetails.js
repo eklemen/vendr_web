@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Grid, Header, Segment, Label, Container, Card, Button, Image, Table} from 'semantic-ui-react';
+import {Grid, Header, Segment, Label, Container, Table} from 'semantic-ui-react';
 import {connect} from 'compdata';
 import eventAttendees from '../tests/mockData/eventAttendees';
 import selfEventsList from '../tests/mockData/selfEventsList';
+import ClientCard from "./components/ClientCard";
 
 class EventDetails extends Component {
   componentDidMount() {
@@ -31,20 +32,8 @@ class EventDetails extends Component {
                 <Header as="h3" style={margin}>{event.eventDate}</Header>
               </Container>
             </Segment>
-            { client &&
-              (<Card color='yellow' fluid>
-                <Card.Content>
-                  <Image floated='right' size='mini' src={client.user.igPic} />
-                  <Card.Header>{client.user.igUsername}</Card.Header>
-                  <Card.Meta>Event Host</Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                  <div className='ui two buttons'>
-                    <Button basic color='green'>Approve</Button>
-                    <Button basic color='red'>Decline</Button>
-                  </div>
-                </Card.Content>
-              </Card>)
+            {
+              client && <ClientCard user={client.user}/>
             }
           </Grid.Column>
 
@@ -54,8 +43,8 @@ class EventDetails extends Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Instagram</Table.HeaderCell>
-                    <Table.HeaderCell>Venue</Table.HeaderCell>
-                    <Table.HeaderCell>Date</Table.HeaderCell>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Service</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -63,15 +52,17 @@ class EventDetails extends Component {
                     eventAttendees.data.map(e => (
                       <Table.Row
                         key={e.uuid}
-                        onClick={() => { this.selectRow(e.uuid) }}>
+                        onClick={() => {
+                          this.selectRow(e.uuid)
+                        }}>
                         <Table.Cell>
-                          {e.title}
+                          {e.user.igUsername}
                         </Table.Cell>
                         <Table.Cell>
-                          {e.venue}
+                          {e.igFullName}
                         </Table.Cell>
                         <Table.Cell>
-                          {e.eventDate}
+                          {e.memberRole}
                         </Table.Cell>
                       </Table.Row>
                     ))
