@@ -5,7 +5,7 @@ import selfEventsList from '../tests/mockData/selfEventsList';
 
 class Dashboard extends Component {
 
-  selectRow = (rowId) => {
+  selectRow = rowId => () => {
     console.log(rowId);
   };
 
@@ -41,7 +41,7 @@ class Dashboard extends Component {
                   selfEventsList.data.map(e => (
                     <Table.Row
                       key={e.uuid}
-                      onClick={() => { this.selectRow(e.uuid) }}>
+                      onClick={this.selectRow(e.uuid)}>
                       <Table.Cell>
                         {e.title}
                       </Table.Cell>

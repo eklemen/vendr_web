@@ -29,3 +29,7 @@ body {
 .selectable tr:hover {
   cursor: pointer;
 }
+
+.ui.page.modals.transition.visible {
+  display: flex !important;
+}

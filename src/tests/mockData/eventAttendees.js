@@ -15,6 +15,7 @@ export default {
         igPic: "https://scontent.cdninstagram.com/vp/8e8bd6b65a6bfefbcae50c08720bb066/5B91C36F/t51.2885-19/s150x150/29090632_182932235841437_8779476270481145856_n.jpg"
       },
       memberRole: "vendor",
+      service: "decorations",
       memberPermission: 23
     },
     {
@@ -29,6 +30,7 @@ export default {
         igPic: "https://scontent.cdninstagram.com/vp/8e8bd6b65a6bfefbcae50c08720bb066/5B91C36F/t51.2885-19/s150x150/29090632_182932235841437_8779476270481145856_n.jpg"
       },
       memberRole: "vendor",
+      service: "decorations",
       memberPermission: 1
     },
     {
@@ -43,6 +45,7 @@ export default {
         igPic: "https://scontent.cdninstagram.com/vp/8e8bd6b65a6bfefbcae50c08720bb066/5B91C36F/t51.2885-19/s150x150/29090632_182932235841437_8779476270481145856_n.jpg"
       },
       memberRole: "vendor",
+      service: "chairs and tables",
       memberPermission: 1
     },
     {
@@ -57,6 +60,7 @@ export default {
         igPic: "https://scontent.cdninstagram.com/vp/8e8bd6b65a6bfefbcae50c08720bb066/5B91C36F/t51.2885-19/s150x150/29090632_182932235841437_8779476270481145856_n.jpg"
       },
       memberRole: "client",
+      service: "catering",
       memberPermission: 1
     }
   ]

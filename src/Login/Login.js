@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Icon, Grid, Header } from 'semantic-ui-react';
-import { igLogin } from '../services/LoginService';
+import { Icon, Grid, Header } from 'semantic-ui-react';
+// import { igLogin } from '../services/LoginService';
 import api from "../services/apiEndpoints";
 
 const Login = () => {
-  const login = () => {
-    return igLogin()
-  };
+  // const login = () => {
+  //   return igLogin()
+  // };
 
   return (
     <div className='login-form'>
