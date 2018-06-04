@@ -4,10 +4,24 @@ import {connect} from 'compdata';
 import eventAttendees from '../tests/mockData/eventAttendees';
 import selfEventsList from '../tests/mockData/selfEventsList';
 import {ClientCard, AttendeesTable, AttendeeCard} from "./components";
+import {getEventDetails} from '../services/EventService';
+
+const queryString = require('query-string');
 
 class EventDetails extends Component {
   componentDidMount() {
-    // get attendees
+    const {getEventDetails,
+      selectedEvent,
+      location: {search},
+      history
+    } = this.props;
+    if (!selectedEvent || !selectedEvent.uuid) {
+      const id = queryString.parse(search).id;
+      if (!id) history.push('/dashboard');
+      getEventDetails(id)
+    } else {
+      getEventDetails(selectedEvent.uuid)
+    }
   }
 
   state = {open: false, selectedUser: null};
@@ -23,9 +37,14 @@ class EventDetails extends Component {
 
   render() {
     const {open, selectedUser} = this.state;
+    const {eventDetails} = this.props;
+    if (eventDetails.fetching) return (<div>Loading...</div>);
+    if (eventDetails.error) return <div>Something went wrong</div>;
+    
     const {data} = selfEventsList;
     const event = data[0];
     const margin = {margin: "1rem auto 2rem auto"};
+    return (<div>Foo</div>);
     const client = eventAttendees.data.find(a => a.memberRole === 'client');
     const attendees = eventAttendees.data.filter(a => a.memberRole === 'vendor');
     const inlineStyle = {
@@ -75,7 +94,7 @@ class EventDetails extends Component {
           onClose={this.close}
           style={inlineStyle.modal}>
           <Modal.Content>
-            <AttendeeCard attendee={selectedUser} />
+            <AttendeeCard attendee={selectedUser}/>
           </Modal.Content>
         </Modal>
       </div>
@@ -83,4 +102,15 @@ class EventDetails extends Component {
   }
 }
 
-export default connect(null)(EventDetails, 'EventDetails');
+const mapStateToProps = (state) => ({
+  selectedEvent: state.CompData.MyEventsTable,
+  eventDetails: state.Queries.EventDetails || {}
+});
+
+const actions = {
+  getEventDetails
+};
+
+export default connect(
+  mapStateToProps, actions
+)(EventDetails, 'EventDetails');

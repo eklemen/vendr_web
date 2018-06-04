@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Button, Image, Popup} from 'semantic-ui-react';
+import {Card, Button, Image, Icon} from 'semantic-ui-react';
 import startCase from "lodash/startCase";
 
 const AttendeeCard = ({attendee, attendee:{user}}) => {
@@ -11,21 +11,19 @@ const AttendeeCard = ({attendee, attendee:{user}}) => {
           <Card.Header>{user.igUsername}</Card.Header>
           <Card.Meta>{startCase(attendee.memberRole)}</Card.Meta>
           <Card.Description>
-            <p>Matthew is a musician living in Nashville.</p>
+            <p><strong>Name:</strong> {user.igFullName}</p>
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>Phone:</strong> {user.phone}</p>
             <p><strong>Service:</strong> {attendee.service}</p>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Popup
-            trigger={<Button icon='remove user' color='red' />}
-            content='This user did not attend this event.'
-          />
-          <Popup
-            trigger={<Button icon='add' color='blue' />}
-            content='Add user to contacts'
-          />
+          <Button icon color='red'>
+            Report
+          </Button>
+          <Button icon color='green'>
+            Add to Contacts
+          </Button>
         </Card.Content>
       </Card>
     )

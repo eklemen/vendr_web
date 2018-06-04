@@ -4,10 +4,6 @@ import { Icon, Grid, Header } from 'semantic-ui-react';
 import api from "../services/apiEndpoints";
 
 const Login = () => {
-  // const login = () => {
-  //   return igLogin()
-  // };
-
   return (
     <div className='login-form'>
       <style>{`
