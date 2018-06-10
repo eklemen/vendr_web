@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Routes from './routes';
+import {Grid} from 'semantic-ui-react';
 
 class App extends Component {
   render() {
     return (
-        <Routes />
+      <div>
+        <Grid container verticalAlign='top' stackable>
+        </Grid>
+      </div>
     );
   }
 }

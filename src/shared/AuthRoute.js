@@ -20,6 +20,6 @@ const AuthRoute = ({ component: Component, location, ...rest }) => {
       }
     />
   );
-}
+};
 
 export default AuthRoute;

@@ -16,3 +16,12 @@ export function getToken() {
     name: 'User'
   })
 }
+
+export function addContact(uuid) {
+  const endpoint = api.userContacts(uuid);
+  return Query({
+    endpoint,
+    name: 'Contacts',
+    method: 'post'
+  })
+}

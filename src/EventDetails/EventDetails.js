@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Grid, Header, Segment, Label, Container, Modal} from 'semantic-ui-react';
 import {connect} from 'compdata';
-import eventAttendees from '../tests/mockData/eventAttendees';
-import selfEventsList from '../tests/mockData/selfEventsList';
+import format from 'date-fns/format'
 import {ClientCard, AttendeesTable, AttendeeCard} from "./components";
 import {getEventDetails} from '../services/EventService';
 
@@ -38,15 +37,13 @@ class EventDetails extends Component {
   render() {
     const {open, selectedUser} = this.state;
     const {eventDetails} = this.props;
-    if (eventDetails.fetching) return (<div>Loading...</div>);
     if (eventDetails.error) return <div>Something went wrong</div>;
-    
-    const {data} = selfEventsList;
-    const event = data[0];
+    if (!eventDetails.response || eventDetails.fetching) return (<div>Loading...</div>);
+    const {response: event} = eventDetails;
+    const client = event.attendees.find(a => a.memberRole === 'client');
+    const attendees = event.attendees.filter(a => a.memberRole === 'vendor');
+
     const margin = {margin: "1rem auto 2rem auto"};
-    return (<div>Foo</div>);
-    const client = eventAttendees.data.find(a => a.memberRole === 'client');
-    const attendees = eventAttendees.data.filter(a => a.memberRole === 'vendor');
     const inlineStyle = {
       modal: {
         marginTop: '0px !important',
@@ -69,12 +66,12 @@ class EventDetails extends Component {
                   <Label color='teal' size="large" ribbon>Venue</Label>
                   <Header as="h3" style={margin}>{event.venue}</Header>
                   <Label color='teal' size="large" ribbon>Date of Event</Label>
-                  <Header as="h3" style={margin}>{event.eventDate}</Header>
+                  <Header as="h3" style={margin}>
+                    {format(event.eventDate, 'MMM D, YYYY (ddd)')}
+                  </Header>
                 </Container>
               </Segment>
-              {
-                client && <ClientCard user={client.user}/>
-              }
+              <ClientCard user={client}/>
             </Grid.Column>
 
             <Grid.Column width={10}>

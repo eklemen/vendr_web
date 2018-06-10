@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Table, Loader} from 'semantic-ui-react';
 import {connect} from 'compdata';
-import format from 'date-fns/format'
+import format from 'date-fns/format';
 import {getMyEventsList} from '../../services/UserService';
 
 class MyEventsTable extends Component {

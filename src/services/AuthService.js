@@ -10,3 +10,8 @@ export const igLogin = () => {
 
   })
 };
+
+export const logout = async () => {
+  // await axios.get(api.logout)
+  await Promise.resolve(true)
+};
