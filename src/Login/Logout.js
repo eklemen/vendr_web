@@ -5,7 +5,7 @@ import {logout} from '../services/AuthService';
 class Logout extends Component {
   async componentDidMount() {
     await logout();
-    await this.props.setData({token: null});
+    await window.localStorage.setItem('vendrToken', '');
     await this.props.history.push('/login')
   }
 

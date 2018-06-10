@@ -17,6 +17,14 @@ export function getToken() {
   })
 }
 
+export function getSelf() {
+  const endpoint = api.self;
+  return Query({
+    endpoint,
+    name: 'User'
+  })
+}
+
 export function addContact(uuid) {
   const endpoint = api.userContacts(uuid);
   return Query({
